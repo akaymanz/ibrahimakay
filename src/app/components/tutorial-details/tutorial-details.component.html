@@ -1,0 +1,59 @@
+<div *ngIf="currentTutorial" class="edit-form">
+  <h4>Veriler</h4>
+  <form>
+    <div class="form-group">
+      <label for="title">Başlık</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        [(ngModel)]="currentTutorial.title"
+        name="title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Açıklama</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        [(ngModel)]="currentTutorial.description"
+        name="description"
+      />
+    </div>
+
+    <div class="form-group">
+      <label><strong>Durum:</strong></label>
+      {{ currentTutorial.published ? "Yayınlandı" : "Yayında değil" }}
+    </div>
+  </form>
+
+  <button
+    class="badge badge-primary mr-2"
+    *ngIf="currentTutorial.published"
+    (click)="updatePublished(false)"
+  >
+    Yayından Kaldır
+  </button>
+  <button
+    *ngIf="!currentTutorial.published"
+    class="badge badge-primary mr-2"
+    (click)="updatePublished(true)"
+  >
+    Yayınla
+  </button>
+
+  <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
+    Sil
+  </button>
+
+  <button type="submit" class="badge badge-success" (click)="updateTutorial()">
+    Güncelle
+  </button>
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!currentTutorial">
+  <br />
+  <p>Ekleme işlemi başarısız.</p>
+</div>

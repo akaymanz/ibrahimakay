@@ -1,0 +1,34 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form #frm="ngForm" (ngSubmit)="KayitYap()">
+            <div class="card">
+                <div class="card-header">
+                    <p class="mb-4">Üye Kayıt Ekranı</p>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>İsim Soyisim</label>
+                        <input type="text" class="form-control" name="mail" placeholder="Ad Soyad" required #adsoyad [(ngModel)] ="secuye.adsoyad"></div>
+                    <div class="form-group">
+                    <label>E-Posta Adresi</label>
+                    <input type="text" class="form-control" name="mail" placeholder="E-posta" required #mail [(ngModel)] ="secuye.mail"></div>
+                    <div class="form-group">
+                    <label>Şifre</label>
+                    <input type="password" class="form-control" name="parola" placeholder="Şifreniz" required #parola [(ngModel)] ="secuye.parola"></div>
+                    
+                </div>
+                   
+                <div class="card-footer">
+                   
+                    <button class="btn btn-outline-warning" value="Kayıt ol" [disabled] = "frm.invalid">Kayıt Ol</button>
+                </div>
+            </div>
+        </form>
+        <div [ngClass]="sonuc.islem ? 'alert alert-success':'alert alert-danger'" *ngIf="sonuc.mesaj?.length>0">
+            {{sonuc.mesaj}}</div>
+        </div>
+    </div>
+</div>
